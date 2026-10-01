@@ -49,6 +49,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_logo_bg" />
 
+    <!-- 1. AQUÍ: Se añade labelFor apuntando a et_email -->
     <TextView
         android:id="@+id/tv_email_label"
         android:layout_width="wrap_content"
@@ -58,9 +59,11 @@
         android:textColor="@color/text_black"
         android:textSize="14sp"
         android:textStyle="bold"
+        android:labelFor="@id/et_email"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
+    <!-- 2. AQUÍ: Se remueve el labelFor interno -->
     <EditText
         android:id="@+id/et_email"
         android:layout_width="0dp"
@@ -74,6 +77,7 @@
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/tv_email_label" />
 
+    <!-- 3. AQUÍ: Se añade labelFor apuntando a et_password -->
     <TextView
         android:id="@+id/tv_password_label"
         android:layout_width="wrap_content"
@@ -83,6 +87,7 @@
         android:textColor="@color/text_black"
         android:textSize="14sp"
         android:textStyle="bold"
+        android:labelFor="@id/et_password"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/et_email" />
 
@@ -148,8 +153,9 @@
             android:textStyle="italic" />
 
         <TextView
+            android:id="@+id/txtRegistrar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="4dp"
             android:text="@string/register_now"
             android:textColor="@color/text_black"
