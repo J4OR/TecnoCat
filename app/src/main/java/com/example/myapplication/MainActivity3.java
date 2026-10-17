@@ -93,6 +93,7 @@ public class MainActivity3 extends AppCompatActivity {
 
                         database.child(uid).child("nombre").setValue(nombre);
                         database.child(uid).child("correo").setValue(correo);
+                        database.child(uid).child("rol").setValue("cliente");
 
                         Toast.makeText(
                                 this,

@@ -111,7 +111,7 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input"
-                android:text="@string/prod_iphone"
+                android:hint="@string/hint_product_name"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="16dp"
                 android:textColor="@color/text_black"
@@ -130,6 +130,7 @@
                 android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/combo_category"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginTop="8dp"
@@ -137,9 +138,10 @@
                 android:paddingHorizontal="16dp">
 
                 <TextView
+                    android:id="@+id/tv_selected_category"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/cat_celulares"
+                    android:text="@string/hint_category"
                     android:textColor="@color/text_black"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -177,8 +179,8 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input"
-                android:text="@string/price_iphone"
-                android:inputType="text"
+                android:hint="@string/hint_price"
+                android:inputType="numberDecimal"
                 android:paddingHorizontal="16dp"
                 android:textColor="@color/text_black"
                 android:textSize="15sp"
@@ -203,7 +205,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input"
                 android:gravity="top"
-                android:text="@string/val_description"
+                android:hint="@string/hint_description"
                 android:inputType="textMultiLine"
                 android:minHeight="100dp"
                 android:padding="16dp"

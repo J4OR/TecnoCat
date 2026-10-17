@@ -8,19 +8,6 @@
     android:background="@color/white"
     tools:context=".MainActivity6">
 
-    <!-- Top Bar -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:itemIconTint="@color/bottom_nav_color"
-        app:itemTextColor="@color/bottom_nav_color"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_nav_menu"
-        tools:layout_editor_absoluteX="0dp" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_top_bar"
         android:layout_width="match_parent"
@@ -42,6 +29,19 @@
             android:rotation="180"/>
 
         <ImageView
+            android:id="@+id/iv_menu"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="12dp"
+            android:padding="4dp"
+            android:src="@drawable/ic_menu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/text_black"
+            android:contentDescription="@null" />
+
+        <ImageView
             android:id="@+id/iv_fav"
             android:layout_width="32dp"
             android:layout_height="32dp"
@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cl_top_bar">
 
         <LinearLayout
@@ -72,209 +72,68 @@
             <ImageView
                 android:id="@+id/iv_product"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="280dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/gato__1_"
-                android:contentDescription="@string/prod_iphone" />
-
-            <!-- Pagination Dots -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
-
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:background="@drawable/bg_logo_circle"
-                    android:backgroundTint="@color/brand_blue" />
-
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/bg_logo_circle"
-                    android:backgroundTint="@color/text_grey"
-                    android:alpha="0.3" />
-
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/bg_logo_circle"
-                    android:backgroundTint="@color/text_grey"
-                    android:alpha="0.3" />
-            </LinearLayout>
+                android:contentDescription="@null" />
 
             <TextView
+                android:id="@+id/tv_detail_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="@string/prod_iphone"
+                android:layout_marginTop="24dp"
+                android:text="Nombre del Producto"
                 android:textColor="@color/text_black"
-                android:textSize="34sp"
+                android:textSize="28sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tv_detail_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/price_iphone"
+                android:layout_marginTop="4dp"
+                android:text="$0"
                 android:textColor="@color/brand_blue"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="20dp"
                 android:background="#EEEEEE" />
 
+            <!-- Description Section -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/specs_title"
+                android:layout_marginTop="20dp"
+                android:text="Descripción"
                 android:textColor="@color/text_black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <!-- Specs Chips Rows -->
-            <LinearLayout
+            <TextView
+                android:id="@+id/tv_detail_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="vertical">
+                android:layout_marginTop="8dp"
+                android:text="Sin descripción disponible."
+                android:textColor="@color/text_grey"
+                android:textSize="15sp" />
 
-                <!-- Row 1 -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal">
-
-                    <!-- Spec 1 -->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="36dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_spec_chip"
-                        android:gravity="center_vertical"
-                        android:paddingHorizontal="12dp">
-
-                        <ImageView
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:contentDescription="@null"
-                            android:src="@android:drawable/ic_menu_save"
-                            app:tint="@color/brand_blue" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="@string/spec_storage"
-                            android:textColor="@color/text_grey"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <!-- Spec 2 -->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="36dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_spec_chip"
-                        android:gravity="center_vertical"
-                        android:paddingHorizontal="12dp">
-
-                        <ImageView
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:contentDescription="@null"
-                            android:src="@android:drawable/ic_menu_manage"
-                            app:tint="@color/brand_blue" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="18dp"
-                            android:layout_marginStart="8dp"
-                            android:text="@string/spec_chip"
-                            android:textColor="@color/text_grey"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <!-- Row 2 -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal">
-
-                    <!-- Spec 3 -->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="36dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_spec_chip"
-                        android:gravity="center_vertical"
-                        android:paddingHorizontal="12dp">
-
-                        <ImageView
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:contentDescription="@null"
-                            android:src="@android:drawable/ic_menu_camera"
-                            app:tint="@color/brand_blue" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="@string/spec_camera"
-                            android:textColor="@color/text_grey"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <!-- Spec 4 -->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="36dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_spec_chip"
-                        android:gravity="center_vertical"
-                        android:paddingHorizontal="12dp">
-
-                        <ImageView
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:contentDescription="@null"
-                            android:src="@android:drawable/ic_menu_slideshow"
-                            app:tint="@color/brand_blue" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="@string/spec_screen"
-                            android:textColor="@color/text_grey"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="#EEEEEE" />
 
             <!-- Action Button -->
             <LinearLayout
                 android:id="@+id/btn_whatsapp"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="28dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/bg_whatsapp_button"
                 android:gravity="center"
@@ -282,8 +141,8 @@
                 android:paddingHorizontal="16dp">
 
                 <ImageView
-                    android:layout_width="55dp"
-                    android:layout_height="56dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:contentDescription="@null"
                     android:src="@drawable/_28afd71d9474a014395faca3c7c6edab"
                     app:tint="@color/white" />

@@ -67,6 +67,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/image_camara"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:src="@drawable/ic_camera"
@@ -74,6 +75,7 @@
                     android:contentDescription="@null" />
 
                 <TextView
+                    android:id="@+id/tv_add_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -93,6 +95,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/textBox_name"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginTop="8dp"
@@ -100,6 +103,7 @@
                 android:hint="@string/hint_product_name"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="16dp"
+                android:textColor="@color/text_black"
                 android:textColorHint="@color/text_grey"
                 android:textSize="15sp"
                 android:importantForAutofill="no" />
@@ -115,6 +119,7 @@
                 android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/combo_category"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginTop="8dp"
@@ -122,6 +127,7 @@
                 android:paddingHorizontal="16dp">
 
                 <TextView
+                    android:id="@+id/tv_selected_category"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/hint_category"
@@ -155,6 +161,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/textBox_price"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginTop="8dp"
@@ -162,6 +169,7 @@
                 android:hint="@string/hint_price"
                 android:inputType="numberDecimal"
                 android:paddingHorizontal="16dp"
+                android:textColor="@color/text_black"
                 android:textColorHint="@color/text_grey"
                 android:textSize="15sp"
                 android:importantForAutofill="no" />
@@ -177,6 +185,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/textBox_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -186,6 +195,7 @@
                 android:inputType="textMultiLine"
                 android:minHeight="100dp"
                 android:padding="16dp"
+                android:textColor="@color/text_black"
                 android:textColorHint="@color/text_grey"
                 android:textSize="15sp"
                 android:importantForAutofill="no" />

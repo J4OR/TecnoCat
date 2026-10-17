@@ -58,13 +58,12 @@
     <!-- Summary Cards -->
     <LinearLayout
         android:id="@+id/ll_summary"
-        android:layout_width="408dp"
+        android:layout_width="match_parent"
         android:layout_height="129dp"
         android:layout_marginTop="24dp"
         android:baselineAligned="false"
         android:orientation="horizontal"
         android:paddingHorizontal="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cl_top_bar">
 
         <!-- Card 1: Total Products -->
@@ -80,7 +79,7 @@
                 android:id="@+id/tv_total_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/total_products_count"
+                android:text="0"
                 android:textColor="@color/brand_blue"
                 android:textSize="34sp"
                 android:textStyle="bold"
@@ -111,7 +110,7 @@
                 android:id="@+id/tv_cel_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cellphones_count"
+                android:text="0"
                 android:textColor="@color/text_black"
                 android:textSize="34sp"
                 android:textStyle="bold"
@@ -142,7 +141,7 @@
                 android:id="@+id/tv_comp_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/computers_count"
+                android:text="0"
                 android:textColor="@color/text_black"
                 android:textSize="34sp"
                 android:textStyle="bold"
@@ -177,8 +176,8 @@
 
     <!-- Menu List -->
     <LinearLayout
-        android:layout_width="414dp"
-        android:layout_height="231dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:orientation="vertical"
         android:paddingHorizontal="16dp"
@@ -186,6 +185,7 @@
 
         <!-- Gestionar productos -->
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_manage_products"
             android:layout_width="match_parent"
             android:layout_height="60dp">
 
@@ -229,55 +229,10 @@
             android:layout_height="1dp"
             android:background="@color/divider_grey" />
 
-        <!-- Categorías -->
+        <!-- Consultas recibidas -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="60dp">
-
-            <ImageView
-                android:id="@+id/iv_menu_categories"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:contentDescription="@null"
-                android:src="@drawable/ic_grid"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/text_grey" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/cat_computadoras"
-                android:textColor="@color/text_black"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/iv_arrow2"
-                app:layout_constraintStart_toEndOf="@id/iv_menu_categories"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/iv_arrow2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:alpha="0.3"
-                android:contentDescription="@null"
-                android:src="@drawable/ic_chevron_right"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/divider_grey" />
-
-        <!-- Consultas recibidas -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="380dp"
-            android:layout_height="72dp">
 
             <ImageView
                 android:id="@+id/iv_menu_received_queries"

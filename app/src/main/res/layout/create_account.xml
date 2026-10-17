@@ -73,6 +73,7 @@
                 android:hint="@string/hint_name"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="16dp"
+                android:textColor="@color/text_black"
                 android:textColorHint="@color/text_grey"
                 tools:ignore="LabelFor,VisualLintTextFieldSize,TextContrastCheck" />
 
@@ -98,6 +99,7 @@
                 android:hint="@string/hint_email_reg"
                 android:inputType="textEmailAddress"
                 android:paddingHorizontal="16dp"
+                android:textColor="@color/text_black"
                 android:textColorHint="@color/text_grey"
                 tools:ignore="LabelFor,VisualLintTextFieldSize,TextContrastCheck" />
 
@@ -127,6 +129,7 @@
                     android:hint="@string/hint_password"
                     android:inputType="textPassword"
                     android:paddingHorizontal="16dp"
+                    android:textColor="@color/text_black"
                     android:textColorHint="@color/text_grey"
                     tools:ignore="LabelFor,VisualLintTextFieldSize,TextContrastCheck" />
 
@@ -166,6 +169,7 @@
                     android:background="@drawable/bg_input"
                     android:inputType="textPassword"
                     android:paddingHorizontal="16dp"
+                    android:textColor="@color/text_black"
                     android:textColorHint="@color/text_grey"
                     tools:ignore="LabelFor,VisualLintTextFieldSize,TextContrastCheck,DuplicateSpeakableTextCheck" />
 

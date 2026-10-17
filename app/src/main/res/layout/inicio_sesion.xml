@@ -73,6 +73,8 @@
         android:background="@drawable/bg_input"
         android:inputType="textEmailAddress"
         android:paddingHorizontal="16dp"
+        android:textColor="@color/text_black"
+        android:textColorHint="@color/text_grey"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/tv_email_label" />
@@ -107,7 +109,9 @@
             android:autofillHints="password"
             android:background="@drawable/bg_input"
             android:inputType="textPassword"
-            android:paddingHorizontal="16dp" />
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/text_black"
+            android:textColorHint="@color/text_grey" />
 
         <ImageView
             android:layout_width="31dp"
