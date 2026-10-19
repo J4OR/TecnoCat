@@ -24,6 +24,7 @@
     <string name="cat_celulares">Celulares</string>
     <string name="cat_computadoras">Computadoras</string>
     <string name="nav_home">Inicio</string>
+    <string name="nav_catalog">Catálogo</string>
     <string name="nav_favorites">Favoritos</string>
     <string name="nav_profile">Perfil</string>
     <string name="title_celulares">Celulares</string>
@@ -69,6 +70,18 @@
     <string name="quick_access_title">Accesos rápidos</string>
     <string name="manage_products">Gestionar productos</string>
     <string name="received_queries">Consultas recibidas</string>
+    <string name="manage_users">Gestión de usuarios</string>
+    <string name="add_user_title">Agregar usuario</string>
+    <string name="edit_user_title">Editar usuario</string>
+    <string name="label_identification">Identificación</string>
+    <string name="hint_identification">Ej. 1020304050</string>
+    <string name="label_phone">Teléfono</string>
+    <string name="hint_phone">Ej. 3001234567</string>
+    <string name="label_role">Rol del usuario</string>
+    <string name="role_user">Usuario</string>
+    <string name="role_admin">Administrador</string>
+    <string name="btn_save_user">Guardar usuario</string>
+    <string name="btn_update_user">Actualizar usuario</string>
     <string name="products_title">Productos</string>
     <string name="btn_add">+ Agregar</string>
     <string name="status_active">Activo</string>

@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -194,14 +193,18 @@ public class MainActivity12 extends AppCompatActivity {
         productoMap.put("precio", precio);
         productoMap.put("descripcion", descripcion);
 
+        String imageBase64 = null;
         if (imageUriSelected != null) {
-            productoMap.put("imagenUri", imageUriSelected.toString());
+            imageBase64 = ImageUtils.uriToBase64(getContentResolver(), imageUriSelected);
         } else if (imageBitmapSelected != null) {
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            imageBitmapSelected.compress(Bitmap.CompressFormat.JPEG, 80, byteArrayOutputStream);
-            byte[] byteArray = byteArrayOutputStream.toByteArray();
-            String imageBase64 = Base64.encodeToString(byteArray, Base64.DEFAULT);
+            imageBase64 = ImageUtils.bitmapToBase64(imageBitmapSelected);
+        }
+
+        if (imageBase64 != null) {
             productoMap.put("imagenBase64", imageBase64);
+            productoMap.put("imagenUri", null);
+        } else if (imageUriSelected != null) {
+            productoMap.put("imagenUri", imageUriSelected.toString());
         }
 
         // Guardar en la base de datos

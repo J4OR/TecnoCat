@@ -53,6 +53,14 @@ public class MainActivity10 extends AppCompatActivity {
             });
         }
 
+        View clManageUsers = findViewById(R.id.cl_manage_users);
+        if (clManageUsers != null) {
+            clManageUsers.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity10.this, ManageUsersActivity.class);
+                startActivity(intent);
+            });
+        }
+
         cargarContadoresReales();
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

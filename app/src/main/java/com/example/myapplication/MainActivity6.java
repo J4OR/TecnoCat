@@ -1,13 +1,11 @@
 package com.example.myapplication;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Base64;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -50,6 +48,25 @@ public class MainActivity6 extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity6.this, MainActivity9.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
+            });
+        }
+
+        android.view.View btnWhatsapp = findViewById(R.id.btn_whatsapp);
+        if (btnWhatsapp != null) {
+            btnWhatsapp.setOnClickListener(v -> {
+                String nombreProducto = tvName != null ? tvName.getText().toString() : "este producto";
+                String precioProducto = tvPrice != null ? tvPrice.getText().toString() : "";
+                String mensaje = "Hola, me interesa obtener más información sobre " + nombreProducto;
+                if (!precioProducto.isEmpty()) {
+                    mensaje += " (" + precioProducto + ")";
+                }
+                try {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("https://wa.me/573137458590?text=" + Uri.encode(mensaje)));
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity6.this, "No se pudo abrir WhatsApp", Toast.LENGTH_SHORT).show();
+                }
             });
         }
 
@@ -107,24 +124,6 @@ public class MainActivity6 extends AppCompatActivity {
     }
 
     private void cargarImagen(String imgUri, String imgBase64) {
-        if (ivProduct == null) return;
-
-        if (imgUri != null && !imgUri.isEmpty()) {
-            try {
-                ivProduct.setImageURI(Uri.parse(imgUri));
-            } catch (Exception e) {
-                ivProduct.setImageResource(R.drawable.gato__1_);
-            }
-        } else if (imgBase64 != null && !imgBase64.isEmpty()) {
-            try {
-                byte[] decodedString = Base64.decode(imgBase64, Base64.DEFAULT);
-                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                ivProduct.setImageBitmap(decodedByte);
-            } catch (Exception e) {
-                ivProduct.setImageResource(R.drawable.gato__1_);
-            }
-        } else {
-            ivProduct.setImageResource(R.drawable.gato__1_);
-        }
+        ImageUtils.cargarImagen(this, ivProduct, imgUri, imgBase64);
     }
 }

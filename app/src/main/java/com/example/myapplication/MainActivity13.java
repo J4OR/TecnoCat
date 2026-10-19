@@ -1,10 +1,8 @@
 package com.example.myapplication;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -163,23 +161,7 @@ public class MainActivity13 extends AppCompatActivity {
                 }
 
                 if (ivProductImage != null) {
-                    if (imagenUri != null && !imagenUri.isEmpty()) {
-                        try {
-                            ivProductImage.setImageURI(Uri.parse(imagenUri));
-                        } catch (Exception e) {
-                            ivProductImage.setImageResource(R.drawable.gato__1_);
-                        }
-                    } else if (imagenBase64 != null && !imagenBase64.isEmpty()) {
-                        try {
-                            byte[] decodedString = Base64.decode(imagenBase64, Base64.DEFAULT);
-                            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                            ivProductImage.setImageBitmap(decodedByte);
-                        } catch (Exception e) {
-                            ivProductImage.setImageResource(R.drawable.gato__1_);
-                        }
-                    } else {
-                        ivProductImage.setImageResource(R.drawable.gato__1_);
-                    }
+                    ImageUtils.cargarImagen(MainActivity13.this, ivProductImage, imagenUri, imagenBase64);
                 }
             }
 
@@ -271,16 +253,18 @@ public class MainActivity13 extends AppCompatActivity {
         updateMap.put("descripcion", descripcion);
 
         if (imageChanged) {
+            String imageBase64 = null;
             if (imageUriSelected != null) {
-                updateMap.put("imagenUri", imageUriSelected.toString());
-                updateMap.put("imagenBase64", null);
+                imageBase64 = ImageUtils.uriToBase64(getContentResolver(), imageUriSelected);
             } else if (imageBitmapSelected != null) {
-                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                imageBitmapSelected.compress(Bitmap.CompressFormat.JPEG, 80, byteArrayOutputStream);
-                byte[] byteArray = byteArrayOutputStream.toByteArray();
-                String imageBase64 = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                imageBase64 = ImageUtils.bitmapToBase64(imageBitmapSelected);
+            }
+
+            if (imageBase64 != null) {
                 updateMap.put("imagenBase64", imageBase64);
                 updateMap.put("imagenUri", null);
+            } else if (imageUriSelected != null) {
+                updateMap.put("imagenUri", imageUriSelected.toString());
             }
         }
 

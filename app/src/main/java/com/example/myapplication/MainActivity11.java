@@ -1,11 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -103,23 +99,7 @@ public class MainActivity11 extends AppCompatActivity {
                     }
 
                     if (ivImage != null) {
-                        if (imagenUri != null && !imagenUri.isEmpty()) {
-                            try {
-                                ivImage.setImageURI(Uri.parse(imagenUri));
-                            } catch (Exception e) {
-                                ivImage.setImageResource(R.drawable.gato__1_);
-                            }
-                        } else if (imagenBase64 != null && !imagenBase64.isEmpty()) {
-                            try {
-                                byte[] decodedString = Base64.decode(imagenBase64, Base64.DEFAULT);
-                                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                                ivImage.setImageBitmap(decodedByte);
-                            } catch (Exception e) {
-                                ivImage.setImageResource(R.drawable.gato__1_);
-                            }
-                        } else {
-                            ivImage.setImageResource(R.drawable.gato__1_);
-                        }
+                        ImageUtils.cargarImagen(MainActivity11.this, ivImage, imagenUri, imagenBase64);
                     }
 
                     ImageView ivEdit = itemView.findViewById(R.id.iv_edit);

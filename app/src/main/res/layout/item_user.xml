@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/bg_category_card"
+    android:padding="12dp">
+
+    <!-- Avatar / Role Icon -->
+    <ImageView
+        android:id="@+id/iv_user_avatar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_logo_circle"
+        android:contentDescription="@null"
+        android:padding="10dp"
+        android:src="@drawable/ic_person_outline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/brand_blue" />
+
+    <!-- User Full Name -->
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Nombre del Usuario"
+        android:textColor="@color/text_black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tv_user_role"
+        app:layout_constraintStart_toEndOf="@id/iv_user_avatar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Role Badge -->
+    <TextView
+        android:id="@+id/tv_user_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/bg_spec_chip"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="2dp"
+        android:text="Usuario"
+        android:textColor="@color/brand_blue"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/iv_edit"
+        app:layout_constraintTop_toTopOf="@id/tv_user_name" />
+
+    <!-- Email -->
+    <TextView
+        android:id="@+id/tv_user_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="usuario@correo.com"
+        android:textColor="@color/text_black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/iv_edit"
+        app:layout_constraintStart_toStartOf="@id/tv_user_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_name" />
+
+    <!-- Details: ID & Phone -->
+    <TextView
+        android:id="@+id/tv_user_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="ID: 12345678 • Tel: 3000000000"
+        android:textColor="@color/text_grey"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toStartOf="@+id/iv_edit"
+        app:layout_constraintStart_toStartOf="@id/tv_user_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_email" />
+
+    <!-- Action: Edit -->
+    <ImageView
+        android:id="@+id/iv_edit"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@null"
+        android:padding="4dp"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/iv_delete"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/text_grey" />
+
+    <!-- Action: Delete -->
+    <ImageView
+        android:id="@+id/iv_delete"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:contentDescription="@null"
+        android:padding="4dp"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/logout_red" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

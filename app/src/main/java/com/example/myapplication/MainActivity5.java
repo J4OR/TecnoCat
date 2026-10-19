@@ -1,13 +1,9 @@
 package com.example.myapplication;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -175,8 +171,13 @@ public class MainActivity5 extends AppCompatActivity {
         glProductsContainer.removeAllViews();
 
         for (DataSnapshot productSnap : allProductsList) {
+            String prodId = productSnap.child("id").getValue(String.class);
+            if (prodId == null || prodId.isEmpty()) {
+                prodId = productSnap.getKey();
+            }
             String nombre = productSnap.child("nombre").getValue(String.class);
             String categoria = productSnap.child("categoria").getValue(String.class);
+            String descripcion = productSnap.child("descripcion").getValue(String.class);
             Object precioObj = productSnap.child("precio").getValue();
             String imagenUri = productSnap.child("imagenUri").getValue(String.class);
             String imagenBase64 = productSnap.child("imagenBase64").getValue(String.class);
@@ -207,29 +208,32 @@ public class MainActivity5 extends AppCompatActivity {
                     tvName.setText(nombre.isEmpty() ? "Sin nombre" : nombre);
                 }
 
+                String precioTexto = precioObj != null ? "$" + precioObj.toString() : "$0";
                 if (tvPrice != null) {
-                    tvPrice.setText(precioObj != null ? "$" + precioObj.toString() : "$0");
+                    tvPrice.setText(precioTexto);
                 }
 
                 if (ivProduct != null) {
-                    if (imagenUri != null && !imagenUri.isEmpty()) {
-                        try {
-                            ivProduct.setImageURI(Uri.parse(imagenUri));
-                        } catch (Exception e) {
-                            ivProduct.setImageResource(R.drawable.gato__1_);
-                        }
-                    } else if (imagenBase64 != null && !imagenBase64.isEmpty()) {
-                        try {
-                            byte[] decodedString = Base64.decode(imagenBase64, Base64.DEFAULT);
-                            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                            ivProduct.setImageBitmap(decodedByte);
-                        } catch (Exception e) {
-                            ivProduct.setImageResource(R.drawable.gato__1_);
-                        }
-                    } else {
-                        ivProduct.setImageResource(R.drawable.gato__1_);
-                    }
+                    ImageUtils.cargarImagen(MainActivity5.this, ivProduct, imagenUri, imagenBase64);
                 }
+
+                final String finalProdId = prodId;
+                final String finalNombre = nombre;
+                final String finalPrecio = precioTexto;
+                final String finalDesc = descripcion != null ? descripcion : "";
+                final String finalImgUri = imagenUri;
+                final String finalImgBase64 = imagenBase64;
+
+                itemView.setOnClickListener(v -> {
+                    Intent intent = new Intent(MainActivity5.this, MainActivity6.class);
+                    intent.putExtra("PRODUCT_ID", finalProdId);
+                    intent.putExtra("PRODUCT_NAME", finalNombre);
+                    intent.putExtra("PRODUCT_PRICE", finalPrecio);
+                    intent.putExtra("PRODUCT_DESC", finalDesc);
+                    intent.putExtra("PRODUCT_IMAGE_URI", finalImgUri);
+                    intent.putExtra("PRODUCT_IMAGE_BASE64", finalImgBase64);
+                    startActivity(intent);
+                });
 
                 glProductsContainer.addView(itemView);
             }
