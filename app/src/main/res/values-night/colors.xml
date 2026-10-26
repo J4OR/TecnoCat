@@ -2,6 +2,7 @@
 <resources>
     <color name="surface_background">#101511</color>
     <color name="nav_bar_surface">#252D27</color>
+    <color name="on_primary">#000000</color>
     <color name="text_black">#E1E4E0</color>
     <color name="text_grey">#C0C8C0</color>
     <color name="input_bg">#1C211D</color>

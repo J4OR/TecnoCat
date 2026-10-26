@@ -11,7 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_top_bar"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
+        android:minHeight="64dp"
         android:paddingHorizontal="16dp"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -26,7 +27,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/text_black" />
+            app:tint="@color/text_black"
+            android:foreground="?attr/selectableItemBackground"/>
 
         <TextView
             android:id="@+id/tv_title"
@@ -60,6 +62,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:labelFor="@id/etNombreCompleto"
                 android:text="@string/label_name"
                 android:textColor="@color/text_black"
                 android:textSize="14sp"
@@ -68,7 +71,7 @@
             <EditText
                 android:id="@+id/etNombreCompleto"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:background="@drawable/bg_input"
                 android:hint="@string/hint_name"
@@ -76,7 +79,11 @@
                 android:inputType="textPersonName"
                 android:paddingHorizontal="16dp"
                 android:textColor="@color/text_black"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:imeOptions="actionNext"
+            
+        android:minHeight="56dp"
+    />
 
 
 
@@ -85,6 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:labelFor="@id/etCorreo"
                 android:text="@string/label_email"
                 android:textColor="@color/text_black"
                 android:textSize="14sp"
@@ -93,7 +101,7 @@
             <EditText
                 android:id="@+id/etCorreo"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:background="@drawable/bg_input"
                 android:hint="@string/hint_email"
@@ -101,13 +109,18 @@
                 android:inputType="textEmailAddress"
                 android:paddingHorizontal="16dp"
                 android:textColor="@color/text_black"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:imeOptions="actionNext"
+            
+        android:minHeight="56dp"
+    />
 
             <!-- Field: Contraseña -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:labelFor="@id/etContrasena"
                 android:text="@string/label_password"
                 android:textColor="@color/text_black"
                 android:textSize="14sp"
@@ -116,7 +129,7 @@
             <EditText
                 android:id="@+id/etContrasena"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:background="@drawable/bg_input"
                 android:hint="@string/hint_password"
@@ -124,13 +137,18 @@
                 android:inputType="textPassword"
                 android:paddingHorizontal="16dp"
                 android:textColor="@color/text_black"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:imeOptions="actionNext"
+            
+        android:minHeight="56dp"
+    />
 
             <!-- Field: Confirmar contraseña -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:labelFor="@id/etConfirmarContrasena"
                 android:text="@string/label_confirm_password"
                 android:textColor="@color/text_black"
                 android:textSize="14sp"
@@ -139,7 +157,7 @@
             <EditText
                 android:id="@+id/etConfirmarContrasena"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:background="@drawable/bg_input"
                 android:hint="@string/hint_password"
@@ -147,7 +165,11 @@
                 android:inputType="textPassword"
                 android:paddingHorizontal="16dp"
                 android:textColor="@color/text_black"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:imeOptions="actionDone"
+            
+        android:minHeight="56dp"
+    />
 
             <!-- Field: Selector de Rol -->
             <TextView
@@ -190,16 +212,18 @@
             <Button
                 android:id="@+id/btnGuardarUsuario"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/bg_button"
                 android:text="@string/btn_save_user"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:backgroundTint="@null" />
+                app:backgroundTint="@null" 
+        android:minHeight="56dp"
+    />
 
         </LinearLayout>
     </ScrollView>
@@ -209,7 +233,7 @@
         android:id="@+id/custom_bottom_nav"
         layout="@layout/layout_custom_bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="96dp"
+        android:layout_height="136dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

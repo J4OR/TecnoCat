@@ -65,7 +65,7 @@
             <EditText
                 android:id="@+id/etNombreCompleto"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:autofillHints="name"
                 android:background="@drawable/bg_input"
@@ -74,7 +74,11 @@
                 android:paddingHorizontal="16dp"
                 android:textColor="@color/text_black"
                 android:textColorHint="@color/text_grey"
-                tools:ignore="LabelFor,VisualLintTextFieldSize,TextContrastCheck" />
+                tools:ignore="LabelFor,VisualLintTextFieldSize,TextContrastCheck"
+                android:imeOptions="actionNext"
+            
+        android:minHeight="56dp"
+    />
 
             <!-- Correo Electronico -->
             <TextView
@@ -91,7 +95,7 @@
             <EditText
                 android:id="@+id/etCorreo"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:autofillHints="emailAddress"
                 android:background="@drawable/bg_input"
@@ -100,7 +104,11 @@
                 android:paddingHorizontal="16dp"
                 android:textColor="@color/text_black"
                 android:textColorHint="@color/text_grey"
-                tools:ignore="LabelFor,VisualLintTextFieldSize,TextContrastCheck" />
+                tools:ignore="LabelFor,VisualLintTextFieldSize,TextContrastCheck"
+                android:imeOptions="actionNext"
+            
+        android:minHeight="56dp"
+    />
 
             <!-- Contraseña -->
             <TextView
@@ -131,7 +139,9 @@
                     android:paddingEnd="64dp"
                     android:textColor="@color/text_black"
                     android:textColorHint="@color/text_grey"
-                    tools:ignore="LabelFor,VisualLintTextFieldSize,TextContrastCheck" />
+                    tools:ignore="LabelFor,VisualLintTextFieldSize,TextContrastCheck"
+                    android:imeOptions="actionNext"
+                />
 
                 <ImageButton
                     android:id="@+id/btn_toggle_register_password"
@@ -175,7 +185,9 @@
                     android:paddingEnd="64dp"
                     android:textColor="@color/text_black"
                     android:textColorHint="@color/text_grey"
-                    tools:ignore="LabelFor,VisualLintTextFieldSize,TextContrastCheck,DuplicateSpeakableTextCheck" />
+                    tools:ignore="LabelFor,VisualLintTextFieldSize,TextContrastCheck,DuplicateSpeakableTextCheck"
+                    android:imeOptions="actionDone"
+                />
 
                 <ImageButton
                     android:id="@+id/btn_toggle_confirm_password"
@@ -194,20 +206,22 @@
             <Button
                 android:id="@+id/btnGuardar"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/bg_button"
                 android:text="@string/btn_save"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:backgroundTint="@null" />
+                app:backgroundTint="@null" 
+        android:minHeight="56dp"
+    />
 
             <Button
                 android:id="@+id/btn_cancel"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="24dp"
                 android:outlineAmbientShadowColor="@color/text_grey"
@@ -218,7 +232,9 @@
                 android:textColor="@color/text_black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:backgroundTint="@null" />
+                app:backgroundTint="@null" 
+        android:minHeight="56dp"
+    />
 
         </LinearLayout>
     </ScrollView>

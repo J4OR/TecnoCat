@@ -10,7 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_top_bar"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
+        android:minHeight="64dp"
         android:paddingHorizontal="16dp"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -25,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/text_black"
             android:contentDescription="@null"
-            android:rotation="180"/>
+            android:rotation="180" android:foreground="?attr/selectableItemBackground"/>
 
         <ImageView
             android:id="@+id/iv_fav"
@@ -36,7 +37,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/favorite_accessibility_add" />
+            android:contentDescription="@string/favorite_accessibility_add"
+            android:foreground="?attr/selectableItemBackground"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -153,7 +155,7 @@
         android:id="@+id/custom_bottom_nav"
         layout="@layout/layout_custom_bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="96dp"
+        android:layout_height="136dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

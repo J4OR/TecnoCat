@@ -6,6 +6,8 @@
     android:layout_columnWeight="1"
     android:layout_margin="6dp"
     android:background="@drawable/bg_category_card"
+
+    android:foreground="?attr/selectableItemBackground"
     android:padding="8dp">
 
     <!-- Image Container with Favorite Button -->
@@ -34,7 +36,8 @@
             android:background="@drawable/bg_fav_circle"
             android:contentDescription="@string/favorite_accessibility_add"
             android:padding="8dp"
-            android:src="@drawable/ic_star_outline" />
+            android:src="@drawable/ic_star_outline"
+            android:foreground="?attr/selectableItemBackground"/>
     </androidx.cardview.widget.CardView>
 
     <!-- Product Name -->
@@ -43,8 +46,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:ellipsize="end"
-        android:maxLines="1"
         android:text="@string/placeholder_product"
         android:textColor="@color/text_black"
         android:textSize="20sp"

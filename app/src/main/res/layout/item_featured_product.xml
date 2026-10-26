@@ -7,6 +7,7 @@
     android:background="@drawable/bg_category_card"
     android:clickable="true"
     android:focusable="true"
+
     android:foreground="?attr/selectableItemBackground"
     android:orientation="vertical"
     android:padding="10dp">
@@ -31,8 +32,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:ellipsize="end"
-        android:maxLines="2"
         android:textColor="@color/text_black"
         android:textSize="14sp"
         android:textStyle="bold" />

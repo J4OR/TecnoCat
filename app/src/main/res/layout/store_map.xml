@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/tv_store_title"
         android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:paddingHorizontal="16dp"
         android:text="@string/store_map_title"
@@ -18,7 +18,9 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" 
+        android:minHeight="56dp"
+    />
 
     <TextView
         android:id="@+id/tv_store_distance"
@@ -111,19 +113,21 @@
     <Button
         android:id="@+id/btn_navigation"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/bg_button"
         android:text="@string/store_map_start_navigation"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="?attr/colorOnPrimary"
         android:textSize="15sp"
         android:textStyle="bold"
         app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_route_options" />
+        app:layout_constraintTop_toBottomOf="@id/ll_route_options" 
+        android:minHeight="56dp"
+    />
 
     <WebView
         android:id="@+id/web_map"
@@ -153,13 +157,15 @@
 
         <TextView
             android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/bg_add_button"
             android:gravity="center"
             android:text="@string/store_map_speed_icon"
-            android:textColor="@color/white"
+            android:textColor="?attr/colorOnPrimary"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold" 
+        android:minHeight="40dp"
+    />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -190,7 +196,7 @@
         android:id="@+id/custom_bottom_nav"
         layout="@layout/layout_custom_bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="96dp"
+        android:layout_height="136dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

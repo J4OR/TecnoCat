@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
@@ -15,6 +15,7 @@
         <!-- Text color for inputs -->
         <item name="android:editTextColor">@color/text_black</item>
         <item name="android:textColorPrimary">@color/text_black</item>
+        <item name="materialButtonStyle">@style/Widget.TechnoCat.Button</item>
         <!-- Customize your theme here. -->
     </style>
 

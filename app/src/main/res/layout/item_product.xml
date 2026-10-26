@@ -79,7 +79,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/logout_red" />
+        app:tint="@color/logout_red"
+        android:foreground="?attr/selectableItemBackground"/>
 
     <ImageView
         android:id="@+id/iv_edit"
@@ -94,6 +95,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/iv_delete"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/text_grey" />
+        app:tint="@color/text_grey"
+        android:foreground="?attr/selectableItemBackground"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -268,7 +268,7 @@ public class StoreMapActivity extends AppCompatActivity {
 
     private void styleModeCard(LinearLayout card, boolean selected) {
         card.setBackgroundResource(selected ? R.drawable.bg_add_button : R.drawable.bg_category_card);
-        int color = ContextCompat.getColor(this, selected ? R.color.white : R.color.text_black);
+        int color = ContextCompat.getColor(this, selected ? R.color.on_primary : R.color.text_black);
         for (int i = 0; i < card.getChildCount(); i++) {
             View child = card.getChildAt(i);
             if (child instanceof TextView) ((TextView) child).setTextColor(color);

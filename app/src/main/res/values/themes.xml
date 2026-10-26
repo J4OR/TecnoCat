@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -21,6 +21,7 @@
 
     <style name="Widget.TechnoCat.Button" parent="Widget.MaterialComponents.Button">
         <item name="android:elevation">5dp</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:outlineSpotShadowColor">@color/brand_blue</item>
         <item name="android:outlineAmbientShadowColor">@color/brand_blue</item>
         <item name="rippleColor">@color/button_ripple</item>

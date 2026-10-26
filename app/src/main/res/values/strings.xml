@@ -103,7 +103,7 @@
     <string name="delete_warning">Esta acción no se puede deshacer de ninguna manera.</string>
     <string name="btn_delete">Eliminar</string>
     <string name="catalog_title">Catálogo de Productos</string>
-    <string name="hint_search_product">Buscar producto por nombre…</string>
+    <string name="hint_search_product">Buscar producto</string>
     <string name="filter_all">Todos</string>
     <string name="filter_celulares">Celulares</string>
     <string name="filter_computadores">Computadores</string>

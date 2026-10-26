@@ -27,8 +27,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:ellipsize="end"
-        android:maxLines="1"
         android:text="@string/placeholder_user_name"
         android:textColor="@color/text_black"
         android:textSize="17sp"
@@ -43,8 +41,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:ellipsize="end"
-        android:maxLines="1"
         android:text="@string/placeholder_email"
         android:textColor="@color/text_black"
         android:textSize="14sp"
@@ -64,7 +60,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/iv_delete"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/text_grey" />
+        app:tint="@color/text_grey"
+        android:foreground="?attr/selectableItemBackground"/>
 
     <!-- Action: Delete -->
     <ImageView
@@ -77,6 +74,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/logout_red" />
+        app:tint="@color/logout_red"
+        android:foreground="?attr/selectableItemBackground"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

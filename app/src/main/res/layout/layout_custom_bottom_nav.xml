@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/custom_bottom_nav"
     android:layout_width="match_parent"
-    android:layout_height="96dp"
+    android:layout_height="136dp"
     android:clipChildren="false"
     android:clipToPadding="false"
     tools:ignore="MergeRootFrame">
@@ -13,7 +13,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_nav_bar"
         android:layout_width="match_parent"
-        android:layout_height="76dp"
+        android:layout_height="120dp"
         android:layout_gravity="bottom"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
@@ -91,8 +91,10 @@
                 <!-- Label -->
                 <TextView
                     android:id="@+id/tv_home_label"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingHorizontal="2dp"
                     android:layout_gravity="center_horizontal|bottom"
                     android:layout_marginBottom="4dp"
                     android:text="@string/nav_home"
@@ -162,8 +164,10 @@
                 <!-- Label -->
                 <TextView
                     android:id="@+id/tv_map_label"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingHorizontal="2dp"
                     android:layout_gravity="center_horizontal|bottom"
                     android:layout_marginBottom="4dp"
                     android:text="@string/nav_map"
@@ -233,8 +237,10 @@
                 <!-- Label -->
                 <TextView
                     android:id="@+id/tv_catalog_label"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingHorizontal="2dp"
                     android:layout_gravity="center_horizontal|bottom"
                     android:layout_marginBottom="4dp"
                     android:text="@string/nav_catalog"
@@ -306,8 +312,10 @@
                 <!-- Label -->
                 <TextView
                     android:id="@+id/tv_profile_label"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingHorizontal="2dp"
                     android:layout_gravity="center_horizontal|bottom"
                     android:layout_marginBottom="4dp"
                     android:text="@string/nav_profile"

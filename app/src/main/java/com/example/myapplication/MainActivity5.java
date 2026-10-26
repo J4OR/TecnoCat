@@ -176,7 +176,7 @@ public class MainActivity5 extends AppCompatActivity {
     private void actualizarEstiloBotonesFiltro() {
         int activeBg = R.drawable.bg_add_button;
         int inactiveBg = R.drawable.bg_button_secondary;
-        int activeColor = ContextCompat.getColor(this, R.color.white);
+        int activeColor = ContextCompat.getColor(this, R.color.on_primary);
         int inactiveColor = ContextCompat.getColor(this, R.color.text_black);
 
         if (btnFilterAll != null) {

@@ -64,7 +64,7 @@
     <EditText
         android:id="@+id/et_email"
         android:layout_width="0dp"
-        android:layout_height="52dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:autofillHints="emailAddress"
         android:background="@drawable/bg_input"
@@ -74,7 +74,11 @@
         android:textColorHint="@color/text_grey"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/tv_email_label" />
+        app:layout_constraintTop_toBottomOf="@id/tv_email_label"
+        android:imeOptions="actionNext"
+    
+        android:minHeight="56dp"
+    />
 
     <TextView
         android:id="@+id/tv_password_label"
@@ -108,7 +112,9 @@
             android:paddingHorizontal="16dp"
             android:paddingEnd="64dp"
             android:textColor="@color/text_black"
-            android:textColorHint="@color/text_grey" />
+            android:textColorHint="@color/text_grey"
+            android:imeOptions="actionDone"
+        />
 
         <ImageButton
             android:id="@+id/btn_toggle_login_password"
@@ -154,7 +160,7 @@
         android:paddingHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/tv_login_with">
+        app:layout_constraintTop_toBottomOf="@id/tv_login_with" android:foreground="?attr/selectableItemBackground">
 
         <ImageView
             android:layout_width="24dp"
@@ -175,18 +181,20 @@
     <Button
         android:id="@+id/btn_login"
         android:layout_width="0dp"
-        android:layout_height="52dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_button"
         android:text="@string/login_title"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="?attr/colorOnPrimary"
         android:textSize="16sp"
         android:textStyle="bold"
         app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/btn_google" />
+        app:layout_constraintTop_toBottomOf="@id/btn_google" 
+        android:minHeight="56dp"
+    />
 
     <LinearLayout
         android:id="@+id/ll_footer"
@@ -212,7 +220,8 @@
             android:layout_marginStart="4dp"
             android:text="@string/register_now"
             android:textColor="@color/text_black"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:foreground="?attr/selectableItemBackground"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
