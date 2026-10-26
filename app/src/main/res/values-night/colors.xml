@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="surface_background">#101511</color>
+    <color name="nav_bar_surface">#252D27</color>
+    <color name="text_black">#E1E4E0</color>
+    <color name="text_grey">#C0C8C0</color>
+    <color name="input_bg">#1C211D</color>
+    <color name="chip_bg">#262B27</color>
+    <color name="divider_grey">#404942</color>
+    <color name="brand_blue">#A9C7FF</color>
+    <color name="brand_light_blue">#233A5E</color>
+    <color name="brand_green">#6DD58C</color>
+    <color name="logout_red">#FFB4AB</color>
+    <color name="delete_bg_light">#5C1717</color>
+</resources>
