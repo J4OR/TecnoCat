@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -95,17 +96,24 @@ public class MainActivity12 extends AppCompatActivity {
             ivBack.setOnClickListener(v -> finish());
         }
 
+        BottomNavBarHelper.setup(this, BottomNavBarHelper.Tab.NONE);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            KeyboardUtils.applyImeInsets(v, insets);
             return insets;
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BottomNavBarHelper.setup(this, BottomNavBarHelper.Tab.NONE);
+    }
+
     private void mostrarOpcionesImagen() {
-        String[] opciones = {"Tomar foto", "Elegir de la galería"};
+        String[] opciones = {getString(R.string.option_take_photo), getString(R.string.option_choose_gallery)};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Seleccionar imagen");
+        builder.setTitle(R.string.select_image_title);
         builder.setItems(opciones, (dialog, which) -> {
             if (which == 0) {
                 cameraLauncher.launch(null);
@@ -117,9 +125,9 @@ public class MainActivity12 extends AppCompatActivity {
     }
 
     private void mostrarOpcionesCategoria(TextView tvSelectedCategory) {
-        String[] categorias = {"Celular", "Computador"};
+        String[] categorias = {getString(R.string.cat_celulares), getString(R.string.cat_computadoras)};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Seleccionar categoría");
+        builder.setTitle(R.string.select_category_title);
         builder.setItems(categorias, (dialog, which) -> {
             if (tvSelectedCategory != null) {
                 tvSelectedCategory.setText(categorias[which]);
@@ -138,7 +146,7 @@ public class MainActivity12 extends AppCompatActivity {
         // Validaciones
         if (nombre.isEmpty()) {
             if (etNombre != null) {
-                etNombre.setError("Ingresa el nombre del producto");
+                etNombre.setError(getString(R.string.err_enter_product_name));
                 etNombre.requestFocus();
             }
             return;
@@ -146,13 +154,13 @@ public class MainActivity12 extends AppCompatActivity {
 
         String hintCategoria = getString(R.string.hint_category);
         if (categoria.isEmpty() || categoria.equalsIgnoreCase(hintCategoria)) {
-            Toast.makeText(this, "Selecciona una categoría", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.msg_select_category, Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (precioStr.isEmpty()) {
             if (etPrecio != null) {
-                etPrecio.setError("Ingresa el precio del producto");
+                etPrecio.setError(getString(R.string.err_enter_product_price));
                 etPrecio.requestFocus();
             }
             return;
@@ -163,7 +171,7 @@ public class MainActivity12 extends AppCompatActivity {
             precio = Double.parseDouble(precioStr);
         } catch (NumberFormatException e) {
             if (etPrecio != null) {
-                etPrecio.setError("Ingresa un precio válido");
+                etPrecio.setError(getString(R.string.err_enter_valid_price));
                 etPrecio.requestFocus();
             }
             return;
@@ -171,7 +179,7 @@ public class MainActivity12 extends AppCompatActivity {
 
         if (descripcion.isEmpty()) {
             if (etDescripcion != null) {
-                etDescripcion.setError("Ingresa la descripción del producto");
+                etDescripcion.setError(getString(R.string.err_enter_product_desc));
                 etDescripcion.requestFocus();
             }
             return;
@@ -182,7 +190,7 @@ public class MainActivity12 extends AppCompatActivity {
         String productoId = productosRef.push().getKey();
 
         if (productoId == null) {
-            Toast.makeText(this, "Error al generar ID para el producto", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.msg_error_product_id, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -192,6 +200,7 @@ public class MainActivity12 extends AppCompatActivity {
         productoMap.put("categoria", categoria);
         productoMap.put("precio", precio);
         productoMap.put("descripcion", descripcion);
+        productoMap.put("activo", true);
 
         String imageBase64 = null;
         if (imageUriSelected != null) {
@@ -210,7 +219,7 @@ public class MainActivity12 extends AppCompatActivity {
         // Guardar en la base de datos
         productosRef.child(productoId).setValue(productoMap)
                 .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(MainActivity12.this, "Producto guardado correctamente", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity12.this, R.string.msg_product_saved, Toast.LENGTH_SHORT).show();
                     finish();
                 })
                 .addOnFailureListener(e -> {
@@ -241,5 +250,11 @@ public class MainActivity12 extends AppCompatActivity {
         if (tvAddImage != null) {
             tvAddImage.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        KeyboardUtils.hideKeyboardWhenTappedOutside(this, event);
+        return super.dispatchTouchEvent(event);
     }
 }

@@ -5,7 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".MainActivity3">
 
     <androidx.constraintlayout.widget.Guideline
@@ -42,7 +41,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="@id/btnGuardar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/tv_title">
@@ -129,19 +128,23 @@
                     android:hint="@string/hint_password"
                     android:inputType="textPassword"
                     android:paddingHorizontal="16dp"
+                    android:paddingEnd="64dp"
                     android:textColor="@color/text_black"
                     android:textColorHint="@color/text_grey"
                     tools:ignore="LabelFor,VisualLintTextFieldSize,TextContrastCheck" />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                <ImageButton
+                    android:id="@+id/btn_toggle_register_password"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_gravity="end|center_vertical"
-                    android:layout_marginEnd="16dp"
-                    android:alpha="0.5"
-                    android:contentDescription="@null"
-                    android:src="@android:drawable/ic_menu_view"
-                    tools:ignore="ImageContrastCheck" />
+                    android:layout_marginEnd="2dp"
+                    android:background="@drawable/bg_password_toggle"
+                    android:contentDescription="@string/password_show"
+                    android:padding="12dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_eye_closed"
+                    app:tint="@color/white" />
             </FrameLayout>
 
             <!-- Confirmar contraseña -->
@@ -169,56 +172,55 @@
                     android:background="@drawable/bg_input"
                     android:inputType="textPassword"
                     android:paddingHorizontal="16dp"
+                    android:paddingEnd="64dp"
                     android:textColor="@color/text_black"
                     android:textColorHint="@color/text_grey"
                     tools:ignore="LabelFor,VisualLintTextFieldSize,TextContrastCheck,DuplicateSpeakableTextCheck" />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                <ImageButton
+                    android:id="@+id/btn_toggle_confirm_password"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_gravity="end|center_vertical"
-                    android:layout_marginEnd="16dp"
-                    android:alpha="0.5"
-                    android:contentDescription="@null"
-                    android:src="@android:drawable/ic_menu_view"
-                    tools:ignore="ImageContrastCheck" />
+                    android:layout_marginEnd="2dp"
+                    android:background="@drawable/bg_password_toggle"
+                    android:contentDescription="@string/password_show"
+                    android:padding="12dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_eye_closed"
+                    app:tint="@color/white" />
             </FrameLayout>
+
+            <Button
+                android:id="@+id/btnGuardar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_button"
+                android:text="@string/btn_save"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="24dp"
+                android:outlineAmbientShadowColor="@color/text_grey"
+                android:outlineSpotShadowColor="@color/text_grey"
+                android:background="@drawable/bg_button_secondary"
+                android:text="@string/btn_cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/text_black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
 
         </LinearLayout>
     </ScrollView>
-
-    <Button
-        android:id="@+id/btnGuardar"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/bg_button"
-        android:text="@string/btn_save"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:backgroundTint="@null"
-        app:layout_constraintBottom_toTopOf="@id/btn_cancel"
-        app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintStart_toStartOf="@id/guideline_start"
-        tools:ignore="VisualLintButtonSize" />
-
-    <Button
-        android:id="@+id/btn_cancel"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/bg_button_secondary"
-        android:text="@string/btn_cancel"
-        android:textAllCaps="false"
-        android:textColor="@color/text_black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:backgroundTint="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintStart_toStartOf="@id/guideline_start"
-        tools:ignore="VisualLintButtonSize" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

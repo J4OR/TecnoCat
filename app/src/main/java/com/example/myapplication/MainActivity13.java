@@ -3,12 +3,14 @@ package com.example.myapplication;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.widget.SwitchCompat;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
@@ -39,6 +41,7 @@ public class MainActivity13 extends AppCompatActivity {
     private ImageView ivProductImage;
     private EditText etNombre, etPrecio, etDescripcion;
     private TextView tvSelectedCategory;
+    private SwitchCompat switchProductActive;
 
     private Bitmap imageBitmapSelected = null;
     private Uri imageUriSelected = null;
@@ -83,6 +86,7 @@ public class MainActivity13 extends AppCompatActivity {
         etPrecio = findViewById(R.id.et_product_price);
         etDescripcion = findViewById(R.id.et_product_desc);
         tvSelectedCategory = findViewById(R.id.tv_selected_category);
+        switchProductActive = findViewById(R.id.switch_product_active);
 
         TextView btnChangeImage = findViewById(R.id.btn_change_image);
         View comboCategory = findViewById(R.id.combo_category);
@@ -93,7 +97,7 @@ public class MainActivity13 extends AppCompatActivity {
             productoRef = FirebaseDatabase.getInstance().getReference("productos").child(productId);
             cargarDatosProducto();
         } else {
-            Toast.makeText(this, "Error: No se encontró el producto", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.msg_product_not_found, Toast.LENGTH_SHORT).show();
             finish();
         }
 
@@ -117,11 +121,18 @@ public class MainActivity13 extends AppCompatActivity {
             ivBack.setOnClickListener(v -> finish());
         }
 
+        BottomNavBarHelper.setup(this, BottomNavBarHelper.Tab.NONE);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            KeyboardUtils.applyImeInsets(v, insets);
             return insets;
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BottomNavBarHelper.setup(this, BottomNavBarHelper.Tab.NONE);
     }
 
     private void cargarDatosProducto() {
@@ -131,7 +142,7 @@ public class MainActivity13 extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (!snapshot.exists()) {
-                    Toast.makeText(MainActivity13.this, "El producto no existe", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity13.this, R.string.msg_product_does_not_exist, Toast.LENGTH_SHORT).show();
                     finish();
                     return;
                 }
@@ -142,6 +153,7 @@ public class MainActivity13 extends AppCompatActivity {
                 String descripcion = snapshot.child("descripcion").getValue(String.class);
                 String imagenUri = snapshot.child("imagenUri").getValue(String.class);
                 String imagenBase64 = snapshot.child("imagenBase64").getValue(String.class);
+                Boolean activo = snapshot.child("activo").getValue(Boolean.class);
 
                 if (etNombre != null && nombre != null) {
                     etNombre.setText(nombre);
@@ -159,6 +171,9 @@ public class MainActivity13 extends AppCompatActivity {
                 if (etDescripcion != null && descripcion != null) {
                     etDescripcion.setText(descripcion);
                 }
+                if (switchProductActive != null) {
+                    switchProductActive.setChecked(activo == null || activo);
+                }
 
                 if (ivProductImage != null) {
                     ImageUtils.cargarImagen(MainActivity13.this, ivProductImage, imagenUri, imagenBase64);
@@ -173,9 +188,9 @@ public class MainActivity13 extends AppCompatActivity {
     }
 
     private void mostrarOpcionesImagen() {
-        String[] opciones = {"Tomar foto", "Elegir de la galería"};
+        String[] opciones = {getString(R.string.option_take_photo), getString(R.string.option_choose_gallery)};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Cambiar imagen");
+        builder.setTitle(R.string.change_image_title);
         builder.setItems(opciones, (dialog, which) -> {
             if (which == 0) {
                 cameraLauncher.launch(null);
@@ -187,9 +202,9 @@ public class MainActivity13 extends AppCompatActivity {
     }
 
     private void mostrarOpcionesCategoria() {
-        String[] categorias = {"Celular", "Computador"};
+        String[] categorias = {getString(R.string.cat_celulares), getString(R.string.cat_computadoras)};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Seleccionar categoría");
+        builder.setTitle(R.string.select_category_title);
         builder.setItems(categorias, (dialog, which) -> {
             if (tvSelectedCategory != null) {
                 tvSelectedCategory.setText(categorias[which]);
@@ -207,7 +222,7 @@ public class MainActivity13 extends AppCompatActivity {
 
         if (nombre.isEmpty()) {
             if (etNombre != null) {
-                etNombre.setError("Ingresa el nombre del producto");
+                etNombre.setError(getString(R.string.err_enter_product_name));
                 etNombre.requestFocus();
             }
             return;
@@ -215,13 +230,13 @@ public class MainActivity13 extends AppCompatActivity {
 
         String hintCategoria = getString(R.string.hint_category);
         if (categoria.isEmpty() || categoria.equalsIgnoreCase(hintCategoria)) {
-            Toast.makeText(this, "Selecciona una categoría", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.msg_select_category, Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (precioStr.isEmpty()) {
             if (etPrecio != null) {
-                etPrecio.setError("Ingresa el precio del producto");
+                etPrecio.setError(getString(R.string.err_enter_product_price));
                 etPrecio.requestFocus();
             }
             return;
@@ -232,7 +247,7 @@ public class MainActivity13 extends AppCompatActivity {
             precio = Double.parseDouble(precioStr);
         } catch (NumberFormatException e) {
             if (etPrecio != null) {
-                etPrecio.setError("Ingresa un precio válido");
+                etPrecio.setError(getString(R.string.err_enter_valid_price));
                 etPrecio.requestFocus();
             }
             return;
@@ -240,7 +255,7 @@ public class MainActivity13 extends AppCompatActivity {
 
         if (descripcion.isEmpty()) {
             if (etDescripcion != null) {
-                etDescripcion.setError("Ingresa la descripción del producto");
+                etDescripcion.setError(getString(R.string.err_enter_product_desc));
                 etDescripcion.requestFocus();
             }
             return;
@@ -251,6 +266,7 @@ public class MainActivity13 extends AppCompatActivity {
         updateMap.put("categoria", categoria);
         updateMap.put("precio", precio);
         updateMap.put("descripcion", descripcion);
+        updateMap.put("activo", switchProductActive == null || switchProductActive.isChecked());
 
         if (imageChanged) {
             String imageBase64 = null;
@@ -271,10 +287,16 @@ public class MainActivity13 extends AppCompatActivity {
         if (productoRef != null) {
             productoRef.updateChildren(updateMap)
                     .addOnSuccessListener(aVoid -> {
-                        Toast.makeText(MainActivity13.this, "Producto actualizado correctamente", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity13.this, R.string.msg_product_updated, Toast.LENGTH_SHORT).show();
                         finish();
                     })
                     .addOnFailureListener(e -> Toast.makeText(MainActivity13.this, "Error al actualizar: " + e.getMessage(), Toast.LENGTH_LONG).show());
         }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        KeyboardUtils.hideKeyboardWhenTappedOutside(this, event);
+        return super.dispatchTouchEvent(event);
     }
 }

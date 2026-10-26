@@ -5,7 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".MainActivity4">
 
     <!-- Top Bar -->
@@ -17,74 +16,21 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/iv_menu"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:padding="4dp"
-            android:src="@drawable/ic_menu"
+            android:layout_width="190dp"
+            android:layout_height="52dp"
+            android:contentDescription="@string/brand_logo_description"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo_technocat_top"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/text_black"
-            android:contentDescription="@null" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/iv_menu"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
-                android:text="@string/techno"
-                android:textColor="@color/text_black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
-                android:text="@string/cat"
-                android:textColor="@color/brand_blue"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/iv_cart"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@android:drawable/ic_menu_agenda"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/text_black"
-            android:contentDescription="@null" />
-
-        <ImageView
-            android:id="@+id/iv_search"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="16dp"
-            android:src="@android:drawable/ic_menu_search"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/iv_cart"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/text_black"
-            android:contentDescription="@null" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/custom_bottom_nav"
         app:layout_constraintTop_toBottomOf="@id/cl_top_bar">
 
         <LinearLayout
@@ -97,42 +43,20 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
-                android:background="@drawable/bg_banner"
-                android:padding="20dp">
+                android:background="@drawable/bg_banner">
 
-                <TextView
-                    android:id="@+id/tv_banner_title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/banner_title"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/iv_banner_img"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/banner_subtitle"
-                    android:textColor="@color/brand_light_blue"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toStartOf="@+id/iv_banner_img"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_banner_title" />
-
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/iv_banner_img"
-                    android:layout_width="120dp"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/gato__1_"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:contentDescription="@string/banner_description"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/banner_technocat"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Banner"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:contentDescription="@null" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -207,7 +131,8 @@
                         android:scaleType="centerInside"
                         android:src="@drawable/images"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -224,7 +149,62 @@
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/tv_featured_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/featured_products_title"
+                android:textColor="@color/text_black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_featured_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/loading_products"
+                android:textColor="@color/text_grey"
+                android:textSize="14sp" />
+
+            <HorizontalScrollView
+                android:id="@+id/hs_featured_products"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:clipToPadding="false"
+                android:fillViewport="false"
+                android:scrollbars="none"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/ll_featured_products"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
+
         </LinearLayout>
     </ScrollView>
+
+    <!-- Bottom Navigation Bar -->
+    <include
+        android:id="@+id/custom_bottom_nav"
+        layout="@layout/layout_custom_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Overlay for smooth theme transition animation -->
+    <View
+        android:id="@+id/v_theme_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="100dp"
+        android:visibility="gone"
+        tools:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

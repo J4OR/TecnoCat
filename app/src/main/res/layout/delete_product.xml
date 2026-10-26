@@ -5,7 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".MainActivity14">
 
     <!-- Top Bar -->
@@ -95,6 +94,8 @@
         android:layout_height="56dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="12dp"
+        android:outlineAmbientShadowColor="@color/logout_red"
+        android:outlineSpotShadowColor="@color/logout_red"
         android:background="@drawable/bg_button_delete"
         android:text="@string/btn_delete"
         android:textAllCaps="false"
@@ -109,7 +110,9 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="12dp"
+        android:outlineAmbientShadowColor="@color/text_grey"
+        android:outlineSpotShadowColor="@color/text_grey"
         android:background="@drawable/bg_button_secondary"
         android:text="@string/btn_cancel"
         android:textAllCaps="false"
@@ -117,6 +120,16 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:backgroundTint="@null"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/custom_bottom_nav" />
+
+    <!-- Bottom Navigation Bar -->
+    <include
+        android:id="@+id/custom_bottom_nav"
+        layout="@layout/layout_custom_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

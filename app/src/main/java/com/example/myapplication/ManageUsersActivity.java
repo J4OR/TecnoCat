@@ -55,6 +55,8 @@ public class ManageUsersActivity extends AppCompatActivity {
 
         cargarUsuarios();
 
+        BottomNavBarHelper.setup(this, BottomNavBarHelper.Tab.NONE);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -62,10 +64,16 @@ public class ManageUsersActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BottomNavBarHelper.setup(this, BottomNavBarHelper.Tab.NONE);
+    }
+
     private void verificarAccesoAdmin() {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser == null) {
-            Toast.makeText(this, "Acceso denegado: Inicia sesión como administrador", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.msg_access_denied_admin, Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -81,14 +89,14 @@ public class ManageUsersActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String rol = snapshot.getValue(String.class);
                 if (!"admin".equalsIgnoreCase(rol) && !"administrador".equalsIgnoreCase(rol)) {
-                    Toast.makeText(ManageUsersActivity.this, "Acceso restringido solo a administradores", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ManageUsersActivity.this, R.string.msg_access_restricted_admin, Toast.LENGTH_SHORT).show();
                     finish();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ManageUsersActivity.this, "Error de permisos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ManageUsersActivity.this, R.string.msg_permission_error, Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -112,37 +120,19 @@ public class ManageUsersActivity extends AppCompatActivity {
                     if (correo == null) {
                         correo = userSnap.child("email").getValue(String.class);
                     }
-                    String identificacion = userSnap.child("identificacion").getValue(String.class);
-                    String telefono = userSnap.child("telefono").getValue(String.class);
-                    String rol = userSnap.child("rol").getValue(String.class);
-
                     View itemView = getLayoutInflater().inflate(R.layout.item_user, llUsersContainer, false);
 
                     TextView tvName = itemView.findViewById(R.id.tv_user_name);
                     TextView tvEmail = itemView.findViewById(R.id.tv_user_email);
-                    TextView tvDetails = itemView.findViewById(R.id.tv_user_details);
-                    TextView tvRole = itemView.findViewById(R.id.tv_user_role);
                     ImageView ivEdit = itemView.findViewById(R.id.iv_edit);
                     ImageView ivDelete = itemView.findViewById(R.id.iv_delete);
 
                     if (tvName != null) {
-                        tvName.setText(nombre != null && !nombre.isEmpty() ? nombre : "Sin nombre");
+                        tvName.setText(nombre != null && !nombre.isEmpty() ? nombre : getString(R.string.label_no_name));
                     }
 
                     if (tvEmail != null) {
-                        tvEmail.setText(correo != null && !correo.isEmpty() ? correo : "Sin correo");
-                    }
-
-                    if (tvDetails != null) {
-                        String idStr = identificacion != null && !identificacion.isEmpty() ? "ID: " + identificacion : "ID: N/A";
-                        String telStr = telefono != null && !telefono.isEmpty() ? "Tel: " + telefono : "Tel: N/A";
-                        tvDetails.setText(idStr + " • " + telStr);
-                    }
-
-                    if (tvRole != null) {
-                        boolean isAdmin = "admin".equalsIgnoreCase(rol) || "administrador".equalsIgnoreCase(rol);
-                        tvRole.setText(isAdmin ? "Administrador" : "Usuario");
-                        tvRole.setTextColor(getResources().getColor(isAdmin ? R.color.brand_blue : R.color.text_grey, getTheme()));
+                        tvEmail.setText(correo != null && !correo.isEmpty() ? correo : getString(R.string.label_no_email));
                     }
 
                     final String finalUserId = userId;
@@ -170,16 +160,16 @@ public class ManageUsersActivity extends AppCompatActivity {
     }
 
     private void confirmarEliminarUsuario(String userId, String nombre) {
-        String nombreMostrado = nombre != null ? nombre : "este usuario";
+        String nombreMostrado = nombre != null ? nombre : getString(R.string.label_this_user);
         new AlertDialog.Builder(this)
-                .setTitle("Eliminar usuario")
-                .setMessage("¿Estás seguro de eliminar a " + nombreMostrado + "? Esta acción no se puede deshacer.")
-                .setPositiveButton("Eliminar", (dialog, which) -> {
+                .setTitle(R.string.delete_user_title)
+                .setMessage(getString(R.string.delete_user_confirm_msg, nombreMostrado))
+                .setPositiveButton(R.string.btn_delete, (dialog, which) -> {
                     usuariosRef.child(userId).removeValue()
-                            .addOnSuccessListener(aVoid -> Toast.makeText(ManageUsersActivity.this, "Usuario eliminado correctamente", Toast.LENGTH_SHORT).show())
+                            .addOnSuccessListener(aVoid -> Toast.makeText(ManageUsersActivity.this, R.string.msg_user_deleted, Toast.LENGTH_SHORT).show())
                             .addOnFailureListener(e -> Toast.makeText(ManageUsersActivity.this, "Error al eliminar: " + e.getMessage(), Toast.LENGTH_SHORT).show());
                 })
-                .setNegativeButton("Cancelar", null)
+                .setNegativeButton(R.string.btn_cancel, null)
                 .show();
     }
 }

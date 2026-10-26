@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -31,7 +32,7 @@ public class AddEditUserActivity extends AppCompatActivity {
     private DatabaseReference usuariosRef;
 
     private TextView tvTitle;
-    private EditText etNombre, etIdentificacion, etTelefono, etCorreo, etContrasena, etConfirmarContrasena;
+    private EditText etNombre, etCorreo, etContrasena, etConfirmarContrasena;
     private RadioGroup rgRol;
     private RadioButton rbUsuario, rbAdmin;
     private Button btnGuardar;
@@ -50,8 +51,6 @@ public class AddEditUserActivity extends AppCompatActivity {
 
         tvTitle = findViewById(R.id.tv_title);
         etNombre = findViewById(R.id.etNombreCompleto);
-        etIdentificacion = findViewById(R.id.etIdentificacion);
-        etTelefono = findViewById(R.id.etTelefono);
         etCorreo = findViewById(R.id.etCorreo);
         etContrasena = findViewById(R.id.etContrasena);
         etConfirmarContrasena = findViewById(R.id.etConfirmarContrasena);
@@ -86,11 +85,18 @@ public class AddEditUserActivity extends AppCompatActivity {
             btnGuardar.setOnClickListener(v -> guardarUsuario());
         }
 
+        BottomNavBarHelper.setup(this, BottomNavBarHelper.Tab.NONE);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            KeyboardUtils.applyImeInsets(v, insets);
             return insets;
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BottomNavBarHelper.setup(this, BottomNavBarHelper.Tab.NONE);
     }
 
     private void cargarDatosUsuario() {
@@ -102,8 +108,6 @@ public class AddEditUserActivity extends AppCompatActivity {
                 if (!snapshot.exists()) return;
 
                 String nombre = snapshot.child("nombre").getValue(String.class);
-                String identificacion = snapshot.child("identificacion").getValue(String.class);
-                String telefono = snapshot.child("telefono").getValue(String.class);
                 String correo = snapshot.child("correo").getValue(String.class);
                 if (correo == null) {
                     correo = snapshot.child("email").getValue(String.class);
@@ -115,8 +119,6 @@ public class AddEditUserActivity extends AppCompatActivity {
                 String rol = snapshot.child("rol").getValue(String.class);
 
                 if (etNombre != null && nombre != null) etNombre.setText(nombre);
-                if (etIdentificacion != null && identificacion != null) etIdentificacion.setText(identificacion);
-                if (etTelefono != null && telefono != null) etTelefono.setText(telefono);
                 if (etCorreo != null && correo != null) etCorreo.setText(correo);
                 if (etContrasena != null && contrasena != null) etContrasena.setText(contrasena);
                 if (etConfirmarContrasena != null && contrasena != null) etConfirmarContrasena.setText(contrasena);
@@ -139,8 +141,6 @@ public class AddEditUserActivity extends AppCompatActivity {
 
     private void guardarUsuario() {
         String nombre = etNombre != null ? etNombre.getText().toString().trim() : "";
-        String identificacion = etIdentificacion != null ? etIdentificacion.getText().toString().trim() : "";
-        String telefono = etTelefono != null ? etTelefono.getText().toString().trim() : "";
         String correo = etCorreo != null ? etCorreo.getText().toString().trim() : "";
         String contrasena = etContrasena != null ? etContrasena.getText().toString().trim() : "";
         String confirmarContrasena = etConfirmarContrasena != null ? etConfirmarContrasena.getText().toString().trim() : "";
@@ -150,16 +150,6 @@ public class AddEditUserActivity extends AppCompatActivity {
         // Validaciones
         if (nombre.isEmpty()) {
             if (etNombre != null) etNombre.setError("Ingresa el nombre completo");
-            return;
-        }
-
-        if (identificacion.isEmpty()) {
-            if (etIdentificacion != null) etIdentificacion.setError("Ingresa el número de identificación");
-            return;
-        }
-
-        if (telefono.isEmpty()) {
-            if (etTelefono != null) etTelefono.setError("Ingresa el número de teléfono");
             return;
         }
 
@@ -200,8 +190,6 @@ public class AddEditUserActivity extends AppCompatActivity {
         Map<String, Object> userMap = new HashMap<>();
         userMap.put("id", targetUserId);
         userMap.put("nombre", nombre);
-        userMap.put("identificacion", identificacion);
-        userMap.put("telefono", telefono);
         userMap.put("correo", correo);
         userMap.put("contrasena", contrasena);
         userMap.put("rol", rol);
@@ -212,5 +200,11 @@ public class AddEditUserActivity extends AppCompatActivity {
                     finish();
                 })
                 .addOnFailureListener(e -> Toast.makeText(AddEditUserActivity.this, "Error al guardar usuario: " + e.getMessage(), Toast.LENGTH_LONG).show());
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        KeyboardUtils.hideKeyboardWhenTappedOutside(this, event);
+        return super.dispatchTouchEvent(event);
     }
 }

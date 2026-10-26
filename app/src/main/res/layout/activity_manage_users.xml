@@ -5,7 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".ManageUsersActivity">
 
     <!-- Top Bar -->
@@ -48,6 +47,9 @@
             android:id="@+id/btn_add_user"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
+            android:elevation="5dp"
+            android:outlineAmbientShadowColor="@color/brand_blue"
+            android:outlineSpotShadowColor="@color/brand_blue"
             android:background="@drawable/bg_add_button"
             android:gravity="center"
             android:paddingHorizontal="12dp"
@@ -66,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/custom_bottom_nav"
         app:layout_constraintTop_toBottomOf="@id/cl_top_bar">
 
         <LinearLayout
@@ -77,5 +79,15 @@
             android:padding="16dp" />
 
     </ScrollView>
+
+    <!-- Bottom Navigation Bar -->
+    <include
+        android:id="@+id/custom_bottom_nav"
+        layout="@layout/layout_custom_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

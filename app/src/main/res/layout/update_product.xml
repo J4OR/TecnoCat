@@ -5,7 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".MainActivity13">
 
     <!-- Top Bar -->
@@ -48,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="@id/btn_update_product"
+        app:layout_constraintBottom_toTopOf="@id/custom_bottom_nav"
         app:layout_constraintTop_toBottomOf="@id/cl_top_bar">
 
         <LinearLayout
@@ -111,7 +110,6 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input"
-                android:hint="@string/hint_product_name"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="16dp"
                 android:textColor="@color/text_black"
@@ -179,7 +177,6 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input"
-                android:hint="@string/hint_price"
                 android:inputType="numberDecimal"
                 android:paddingHorizontal="16dp"
                 android:textColor="@color/text_black"
@@ -205,7 +202,6 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input"
                 android:gravity="top"
-                android:hint="@string/hint_description"
                 android:inputType="textMultiLine"
                 android:minHeight="100dp"
                 android:padding="16dp"
@@ -213,21 +209,43 @@
                 android:textSize="15sp"
                 android:importantForAutofill="no" />
 
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_product_active"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:checked="true"
+                android:text="@string/product_active"
+                android:textColor="@color/text_black"
+                android:textSize="15sp"
+                app:thumbTint="@color/brand_blue"
+                app:trackTint="@color/brand_light_blue" />
+
+            <Button
+                android:id="@+id/btn_update_product"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_button"
+                android:text="@string/btn_update"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
+
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/btn_update_product"
+    <!-- Bottom Navigation Bar -->
+    <include
+        android:id="@+id/custom_bottom_nav"
+        layout="@layout/layout_custom_bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_margin="20dp"
-        android:background="@drawable/bg_button"
-        android:text="@string/btn_update"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:backgroundTint="@null"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_height="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

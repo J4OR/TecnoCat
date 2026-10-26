@@ -5,7 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".MainActivity6">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,29 +28,15 @@
             android:rotation="180"/>
 
         <ImageView
-            android:id="@+id/iv_menu"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="12dp"
-            android:padding="4dp"
-            android:src="@drawable/ic_menu"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/iv_back"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/text_black"
-            android:contentDescription="@null" />
-
-        <ImageView
             android:id="@+id/iv_fav"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:padding="4dp"
-            android:src="@android:drawable/btn_star_big_off"
+            android:src="@drawable/ic_star_outline"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/text_black"
-            android:contentDescription="@null" />
+            android:contentDescription="@string/favorite_accessibility_add" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -59,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/custom_bottom_nav"
         app:layout_constraintTop_toBottomOf="@id/cl_top_bar">
 
         <LinearLayout
@@ -82,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Nombre del Producto"
+                android:text="@string/product_name_placeholder"
                 android:textColor="@color/text_black"
                 android:textSize="28sp"
                 android:textStyle="bold" />
@@ -92,7 +77,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="$0"
+                android:text="@string/product_price_placeholder"
                 android:textColor="@color/brand_blue"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -108,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Descripción"
+                android:text="@string/product_description_title"
                 android:textColor="@color/text_black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -118,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Sin descripción disponible."
+                android:text="@string/no_description_available"
                 android:textColor="@color/text_grey"
                 android:textSize="15sp" />
 
@@ -135,6 +120,9 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="28dp"
                 android:layout_marginBottom="16dp"
+                android:elevation="5dp"
+                android:outlineAmbientShadowColor="@color/brand_green"
+                android:outlineSpotShadowColor="@color/brand_green"
                 android:background="@drawable/bg_whatsapp_button"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -159,5 +147,15 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <!-- Bottom Navigation Bar -->
+    <include
+        android:id="@+id/custom_bottom_nav"
+        layout="@layout/layout_custom_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

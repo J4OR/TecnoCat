@@ -17,4 +17,11 @@
     <color name="logout_red">#FF4B4B</color>
     <color name="divider_grey">#EEEEEE</color>
     <color name="delete_bg_light">#FFF0F0</color>
+    <color name="surface_background">#FFFFFF</color>
+    <color name="nav_bar_surface">#FFFFFF</color>
+    <color name="loading_background">#03070D</color>
+    <color name="button_ripple">#330052FF</color>
+    <color name="theme_toggle_gradient_start">#0038C8</color>
+    <color name="theme_toggle_gradient_end">#149BFF</color>
+    <color name="theme_toggle_border">#002A9E</color>
 </resources>

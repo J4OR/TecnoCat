@@ -11,15 +11,30 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowBackground">@color/surface_background</item>
         <!-- Text color for inputs -->
         <item name="android:editTextColor">@color/text_black</item>
         <item name="android:textColorPrimary">@color/text_black</item>
+        <item name="materialButtonStyle">@style/Widget.TechnoCat.Button</item>
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.MyApplication.Sidebar" parent="Theme.MyApplication">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowNoTitle">true</item>
+    <style name="Widget.TechnoCat.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:elevation">5dp</item>
+        <item name="android:outlineSpotShadowColor">@color/brand_blue</item>
+        <item name="android:outlineAmbientShadowColor">@color/brand_blue</item>
+        <item name="rippleColor">@color/button_ripple</item>
+    </style>
+
+    <style name="ShapeAppearance.App.Circle" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ShapeAppearance.App.Banner" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">24dp</item>
+    </style>
+
+    <style name="Theme.MyApplication.Loading" parent="Theme.MyApplication">
+        <item name="android:windowBackground">@color/loading_background</item>
     </style>
 </resources>

@@ -44,6 +44,8 @@ public class MainActivity14 extends AppCompatActivity {
             ivClose.setOnClickListener(v -> finish());
         }
 
+        BottomNavBarHelper.setup(this, BottomNavBarHelper.Tab.NONE);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -51,17 +53,23 @@ public class MainActivity14 extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BottomNavBarHelper.setup(this, BottomNavBarHelper.Tab.NONE);
+    }
+
     private void eliminarProducto() {
         if (productId != null && !productId.isEmpty()) {
             DatabaseReference productosRef = FirebaseDatabase.getInstance().getReference("productos");
             productosRef.child(productId).removeValue()
                     .addOnSuccessListener(aVoid -> {
-                        Toast.makeText(MainActivity14.this, "Producto eliminado correctamente", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity14.this, R.string.msg_product_deleted, Toast.LENGTH_SHORT).show();
                         finish();
                     })
-                    .addOnFailureListener(e -> Toast.makeText(MainActivity14.this, "Error al eliminar el producto", Toast.LENGTH_SHORT).show());
+                    .addOnFailureListener(e -> Toast.makeText(MainActivity14.this, R.string.btn_delete, Toast.LENGTH_SHORT).show());
         } else {
-            Toast.makeText(this, "No se especificó un producto a eliminar", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.msg_no_product_to_delete, Toast.LENGTH_SHORT).show();
             finish();
         }
     }

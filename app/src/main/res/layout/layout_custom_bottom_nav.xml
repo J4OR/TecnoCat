@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/custom_bottom_nav"
+    android:layout_width="match_parent"
+    android:layout_height="96dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:ignore="MergeRootFrame">
+
+    <!-- Floating navigation bar; surface color adapts to light and dark themes. -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="8dp"
+        app:cardBackgroundColor="@color/nav_bar_surface"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="14dp"
+        app:cardPreventCornerOverlap="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <!-- TAB 1: INICIO -->
+            <FrameLayout
+                android:id="@+id/tab_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:focusable="true">
+
+                <!-- Raised White Ring -->
+                <View
+                    android:id="@+id/v_home_ring"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/bg_nav_active_ring"
+                    android:elevation="6dp"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <!-- Raised Blue Circle -->
+                <FrameLayout
+                    android:id="@+id/fl_home_icon_container"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_nav_active_circle"
+                    android:elevation="8dp"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/iv_home_active_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/nav_home"
+                        android:src="@drawable/ic_nav_home"
+                        app:tint="@color/white" />
+                </FrameLayout>
+
+                <!-- Inactive Icon -->
+                <ImageView
+                    android:id="@+id/iv_home_inactive_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="12dp"
+                    android:contentDescription="@string/nav_home"
+                    android:src="@drawable/ic_nav_home"
+                    app:tint="@color/text_grey" />
+
+                <!-- Label -->
+                <TextView
+                    android:id="@+id/tv_home_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/nav_home"
+                    android:textColor="@color/text_grey"
+                    android:textSize="11sp"
+                    android:textStyle="normal" />
+
+            </FrameLayout>
+
+            <!-- TAB 2: MAPA -->
+            <FrameLayout
+                android:id="@+id/tab_map"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:focusable="true">
+
+                <!-- Raised White Ring -->
+                <View
+                    android:id="@+id/v_map_ring"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/bg_nav_active_ring"
+                    android:elevation="6dp"
+                    android:visibility="gone"
+                    tools:visibility="gone" />
+
+                <!-- Raised Blue Circle -->
+                <FrameLayout
+                    android:id="@+id/fl_map_icon_container"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_nav_active_circle"
+                    android:elevation="8dp"
+                    android:visibility="gone"
+                    tools:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/iv_map_active_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/nav_map"
+                        android:src="@drawable/ic_nav_map"
+                        app:tint="@color/white" />
+                </FrameLayout>
+
+                <!-- Inactive Icon -->
+                <ImageView
+                    android:id="@+id/iv_map_inactive_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="12dp"
+                    android:contentDescription="@string/nav_map"
+                    android:src="@drawable/ic_nav_map"
+                    app:tint="@color/text_grey" />
+
+                <!-- Label -->
+                <TextView
+                    android:id="@+id/tv_map_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/nav_map"
+                    android:textColor="@color/text_grey"
+                    android:textSize="11sp"
+                    android:textStyle="normal" />
+
+            </FrameLayout>
+
+            <!-- TAB 3: CATÁLOGO -->
+            <FrameLayout
+                android:id="@+id/tab_catalog"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:focusable="true">
+
+                <!-- Raised White Ring -->
+                <View
+                    android:id="@+id/v_catalog_ring"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/bg_nav_active_ring"
+                    android:elevation="6dp"
+                    android:visibility="gone"
+                    tools:visibility="gone" />
+
+                <!-- Raised Blue Circle -->
+                <FrameLayout
+                    android:id="@+id/fl_catalog_icon_container"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_nav_active_circle"
+                    android:elevation="8dp"
+                    android:visibility="gone"
+                    tools:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/iv_catalog_active_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/nav_catalog"
+                        android:src="@drawable/ic_nav_catalog"
+                        app:tint="@color/white" />
+                </FrameLayout>
+
+                <!-- Inactive Icon -->
+                <ImageView
+                    android:id="@+id/iv_catalog_inactive_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="12dp"
+                    android:contentDescription="@string/nav_catalog"
+                    android:src="@drawable/ic_nav_catalog"
+                    app:tint="@color/text_grey" />
+
+                <!-- Label -->
+                <TextView
+                    android:id="@+id/tv_catalog_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/nav_catalog"
+                    android:textColor="@color/text_grey"
+                    android:textSize="11sp"
+                    android:textStyle="normal" />
+
+            </FrameLayout>
+
+            <!-- TAB 4: PERFIL -->
+            <FrameLayout
+                android:id="@+id/tab_profile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:focusable="true">
+
+                <!-- Raised White Ring -->
+                <View
+                    android:id="@+id/v_profile_ring"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/bg_nav_active_ring"
+                    android:elevation="6dp"
+                    android:visibility="gone"
+                    tools:visibility="gone" />
+
+                <!-- Raised Blue Circle Container for Active Avatar -->
+                <FrameLayout
+                    android:id="@+id/fl_profile_icon_container"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_nav_active_circle"
+                    android:elevation="8dp"
+                    android:padding="3dp"
+                    android:visibility="gone"
+                    tools:visibility="gone">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/iv_profile_active_avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/nav_profile"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_person_outline"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Circle" />
+                </FrameLayout>
+
+                <!-- Inactive Avatar -->
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_profile_inactive_avatar"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_marginTop="11dp"
+                    android:contentDescription="@string/nav_profile"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_person_outline"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Circle" />
+
+                <!-- Label -->
+                <TextView
+                    android:id="@+id/tv_profile_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/nav_profile"
+                    android:textColor="@color/text_grey"
+                    android:textSize="11sp"
+                    android:textStyle="normal" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

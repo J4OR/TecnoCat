@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -17,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity3 extends AppCompatActivity {
     private EditText etNombreCompleto, etCorreo, etContrasena, etConfirmarContrasena;
-    private Button btnCrearCuenta;
+    private Button btnCrearCuenta, btnCancel;
     private FirebaseAuth auth;
     private DatabaseReference database;
 
@@ -32,29 +34,44 @@ public class MainActivity3 extends AppCompatActivity {
         etCorreo = findViewById(R.id.etCorreo);
         etContrasena = findViewById(R.id.etContrasena);
         etConfirmarContrasena = findViewById(R.id.etConfirmarContrasena);
+        PasswordVisibilityToggle.bind(etContrasena, findViewById(R.id.btn_toggle_register_password));
+        PasswordVisibilityToggle.bind(etConfirmarContrasena,
+                findViewById(R.id.btn_toggle_confirm_password));
         btnCrearCuenta = findViewById(R.id.btnGuardar);
+        btnCancel = findViewById(R.id.btn_cancel);
 
         // Inicializar Firebase Authentication
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance().getReference("usuarios");
 
-        // Evento del botón
-        btnCrearCuenta.setOnClickListener(v -> registrarUsuario());
+        // Evento del botón para crear cuenta
+        if (btnCrearCuenta != null) {
+            btnCrearCuenta.setOnClickListener(v -> registrarUsuario());
+        }
+
+        // Evento del botón para cancelar y regresar a iniciar sesión
+        if (btnCancel != null) {
+            btnCancel.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity3.this, MainActivity2.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                finish();
+            });
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            KeyboardUtils.applyImeInsets(v, insets);
             return insets;
         });
     }
+
     private void registrarUsuario() {
 
         // Obtener los datos escritos
-        String nombre = etNombreCompleto.getText().toString().trim();
-        String correo = etCorreo.getText().toString().trim();
-        String contrasena = etContrasena.getText().toString().trim();
-        String confirmarContrasena =
-                etConfirmarContrasena.getText().toString().trim();
+        String nombre = etNombreCompleto != null ? etNombreCompleto.getText().toString().trim() : "";
+        String correo = etCorreo != null ? etCorreo.getText().toString().trim() : "";
+        String contrasena = etContrasena != null ? etContrasena.getText().toString().trim() : "";
+        String confirmarContrasena = etConfirmarContrasena != null ? etConfirmarContrasena.getText().toString().trim() : "";
 
         // Verificar campos vacíos
         if (nombre.isEmpty() ||
@@ -118,5 +135,11 @@ public class MainActivity3 extends AppCompatActivity {
                         ).show();
                     }
                 });
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        KeyboardUtils.hideKeyboardWhenTappedOutside(this, event);
+        return super.dispatchTouchEvent(event);
     }
 }

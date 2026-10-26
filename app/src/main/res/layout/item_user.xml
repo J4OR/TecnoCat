@@ -29,29 +29,13 @@
         android:layout_marginStart="12dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Nombre del Usuario"
+        android:text="@string/placeholder_user_name"
         android:textColor="@color/text_black"
         android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tv_user_role"
+        app:layout_constraintEnd_toStartOf="@+id/iv_edit"
         app:layout_constraintStart_toEndOf="@id/iv_user_avatar"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Role Badge -->
-    <TextView
-        android:id="@+id/tv_user_role"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/bg_spec_chip"
-        android:paddingHorizontal="8dp"
-        android:paddingVertical="2dp"
-        android:text="Usuario"
-        android:textColor="@color/brand_blue"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/iv_edit"
-        app:layout_constraintTop_toTopOf="@id/tv_user_name" />
 
     <!-- Email -->
     <TextView
@@ -61,27 +45,12 @@
         android:layout_marginTop="2dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="usuario@correo.com"
+        android:text="@string/placeholder_email"
         android:textColor="@color/text_black"
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/iv_edit"
         app:layout_constraintStart_toStartOf="@id/tv_user_name"
         app:layout_constraintTop_toBottomOf="@id/tv_user_name" />
-
-    <!-- Details: ID & Phone -->
-    <TextView
-        android:id="@+id/tv_user_details"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="ID: 12345678 • Tel: 3000000000"
-        android:textColor="@color/text_grey"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toStartOf="@+id/iv_edit"
-        app:layout_constraintStart_toStartOf="@id/tv_user_name"
-        app:layout_constraintTop_toBottomOf="@id/tv_user_email" />
 
     <!-- Action: Edit -->
     <ImageView

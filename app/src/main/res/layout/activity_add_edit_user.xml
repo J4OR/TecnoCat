@@ -5,7 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".AddEditUserActivity">
 
     <!-- Top Bar -->
@@ -48,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/custom_bottom_nav"
         app:layout_constraintTop_toBottomOf="@id/cl_top_bar">
 
         <LinearLayout
@@ -73,54 +72,13 @@
                 android:layout_marginTop="6dp"
                 android:background="@drawable/bg_input"
                 android:hint="@string/hint_name"
+                android:autofillHints="personName"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="16dp"
                 android:textColor="@color/text_black"
                 android:textSize="15sp" />
 
-            <!-- Field: Identificación -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/label_identification"
-                android:textColor="@color/text_black"
-                android:textSize="14sp"
-                android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/etIdentificacion"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/bg_input"
-                android:hint="@string/hint_identification"
-                android:inputType="number"
-                android:paddingHorizontal="16dp"
-                android:textColor="@color/text_black"
-                android:textSize="15sp" />
-
-            <!-- Field: Teléfono -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/label_phone"
-                android:textColor="@color/text_black"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/etTelefono"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/bg_input"
-                android:hint="@string/hint_phone"
-                android:inputType="phone"
-                android:paddingHorizontal="16dp"
-                android:textColor="@color/text_black"
-                android:textSize="15sp" />
 
             <!-- Field: Correo electrónico -->
             <TextView
@@ -139,6 +97,7 @@
                 android:layout_marginTop="6dp"
                 android:background="@drawable/bg_input"
                 android:hint="@string/hint_email"
+                android:autofillHints="emailAddress"
                 android:inputType="textEmailAddress"
                 android:paddingHorizontal="16dp"
                 android:textColor="@color/text_black"
@@ -161,6 +120,7 @@
                 android:layout_marginTop="6dp"
                 android:background="@drawable/bg_input"
                 android:hint="@string/hint_password"
+                android:autofillHints="newPassword"
                 android:inputType="textPassword"
                 android:paddingHorizontal="16dp"
                 android:textColor="@color/text_black"
@@ -183,6 +143,7 @@
                 android:layout_marginTop="6dp"
                 android:background="@drawable/bg_input"
                 android:hint="@string/hint_password"
+                android:autofillHints="newPassword"
                 android:inputType="textPassword"
                 android:paddingHorizontal="16dp"
                 android:textColor="@color/text_black"
@@ -242,5 +203,15 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <!-- Bottom Navigation Bar -->
+    <include
+        android:id="@+id/custom_bottom_nav"
+        layout="@layout/layout_custom_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
